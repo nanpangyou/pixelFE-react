@@ -1,11 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  Navigate,
-  Outlet,
-  RouterProvider
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { ErrorRouter } from "./routes/ErrorRouter";
 
 const rootDiv = document.getElementById("root") as HTMLElement;
