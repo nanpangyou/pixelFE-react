@@ -31,6 +31,6 @@ export const router = createHashRouter([
   {
     // 404 强制跳转至 ‘/’
     path: "*",
-    element: <Navigate to="/" replace />
+    element: <Navigate to="/welcome/1" replace />
   }
 ]);
