@@ -5,6 +5,8 @@ import { BootPage1 } from "../components/guide/BootPage1";
 import { BootPage2 } from "../components/guide/BootPage2";
 import { BootPage3 } from "../components/guide/BootPage3";
 import { BootPage4 } from "../components/guide/BootPage4";
+import { StyleComponentDemo } from "../components/demo/StyleComponentDemo";
+import { CssModuleDemo } from "../components/demo/CssModuleDemo";
 // import { ErrorRouter } from "./ErrorRouter";
 
 // Todo change hash to browser router
@@ -27,6 +29,14 @@ export const router = createHashRouter([
         ]
       }
     ]
+  },
+  {
+    path: "/style-component-demo",
+    element: <StyleComponentDemo />
+  },
+  {
+    path: "/css-module-demo",
+    element: <CssModuleDemo />
   },
   {
     // 404 强制跳转至 ‘/’
