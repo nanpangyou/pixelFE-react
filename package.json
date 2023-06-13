@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "build:preview": "tsc && vite build --base=/pixelFE-react-preview",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm && npm config set save-prefix=''"
   },
   "dependencies": {
     "@react-spring/web": "9.7.2",
