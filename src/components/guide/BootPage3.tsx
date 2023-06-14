@@ -5,7 +5,6 @@ export const BootPage3: React.FC = () => {
   return (
     <>
       <div style={{ border: "1px solid red" }}> Bootpage3</div>
-      <NavLink to="/welcome/4">下一页</NavLink>
     </>
   );
 };
