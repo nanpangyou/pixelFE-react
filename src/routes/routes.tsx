@@ -7,6 +7,7 @@ import { BootPage3 } from "../components/guide/BootPage3";
 import { BootPage4 } from "../components/guide/BootPage4";
 import { StyleComponentDemo } from "../components/demo/StyleComponentDemo";
 import { CssModuleDemo } from "../components/demo/CssModuleDemo";
+import { UnocssDemo } from "../components/demo/UnocssDemo";
 // import { ErrorRouter } from "./ErrorRouter";
 
 // Todo change hash to browser router
@@ -37,6 +38,10 @@ export const router = createHashRouter([
   {
     path: "/css-module-demo",
     element: <CssModuleDemo />
+  },
+  {
+    path: "/uno-demo",
+    element: <UnocssDemo />
   },
   {
     // 404 强制跳转至 ‘/’
