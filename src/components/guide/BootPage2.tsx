@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 export const BootPage2: React.FC = () => {
   return (
     <>
-      <div style={{ border: "1px solid blue" }}> Bootpage2</div>
+      <div b-1 b-amber b-solid>
+        Bootpage2
+      </div>
     </>
   );
 };

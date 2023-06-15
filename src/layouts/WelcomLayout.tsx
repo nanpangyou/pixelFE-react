@@ -1,6 +1,6 @@
 import { a, useTransition } from "@react-spring/web";
 import * as React from "react";
-import { useRef, type ReactNode } from "react";
+import { useRef, type ReactNode, useState } from "react";
 import { Link, useLocation, useOutlet } from "react-router-dom";
 
 const routeMap: Record<string, Record<string, string>> = {
@@ -10,6 +10,7 @@ const routeMap: Record<string, Record<string, string>> = {
   "/welcome/4": { nav: "/welcome/xxx", text: "开启手帐" }
 };
 export const WelcomeLayout: React.FC = () => {
+  const [extraStyle, setExtraStyle] = useState({});
   const map = useRef<Record<string, ReactNode>>({});
   const location = useLocation();
   const outlet = useOutlet();
@@ -24,18 +25,47 @@ export const WelcomeLayout: React.FC = () => {
     enter: { transform: "translateX(0%)" },
     leave: { transform: "translateX(-100%)" },
     config: {
-      duration: 300
+      duration: 2000
+    },
+    onStart: () => {
+      setExtraStyle({ position: "absolute" });
+    },
+    onRest: () => {
+      setExtraStyle({ position: "relative" });
     }
   });
   return (
-    <>
-      <header>手帐</header>
-      {transitions((styles, pathname) => (
-        <a.div style={styles} key={pathname}>
-          <div>{map.current[pathname]}</div>
-        </a.div>
-      ))}
-      <footer>
+    <div flex flex-col h-screen items-center>
+      <header shrink-0>手帐</header>
+      <main
+        grow-1
+        shrink-1
+        relative
+        b-1
+        b-red
+        b-solid
+        w="100%"
+        bg-blue
+        flex
+        flex-col
+      >
+        {transitions((styles, pathname) => (
+          <a.div
+            style={styles}
+            key={pathname}
+            grow-1
+            flex
+            justify-center
+            items-center
+            w="80%"
+          >
+            <div bg-white style={{ ...extraStyle }}>
+              {map.current[pathname]}
+            </div>
+          </a.div>
+        ))}
+      </main>
+      <footer shrink-0>
         <Link to={routeMap[location.pathname].nav}>
           {routeMap[location.pathname].text}
         </Link>
@@ -43,6 +73,6 @@ export const WelcomeLayout: React.FC = () => {
           <Link to="/welcome/xxx">跳过</Link>
         ) : undefined}
       </footer>
-    </>
+    </div>
   );
 };
