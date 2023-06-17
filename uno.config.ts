@@ -1,16 +1,21 @@
 // 以下代码需全部 cv 过去!!! 如果没有的话可能会引起 unocss 插件不起作用,导致没有提示
 // uno.config.ts
-import {
-  defineConfig,
-  presetAttributify,
-  presetIcons,
-  presetTypography,
-  presetUno,
-  transformerAttributifyJsx
-} from "unocss";
+import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, transformerAttributifyJsx } from "unocss";
 
 export default defineConfig({
-  theme: {},
+  theme: {
+    colors: {
+      // "basic-font-color": "var(--basic-font-color)",
+      // "welcome-background-color-top": "var(--welcome-background-color-top)",
+      // "welcome-background-color-bottom": "var(--welcome-background-color-bottom)",
+      // "welcome-header-text-color": "var(--welcome-header-text-color)",
+      // "welcome-page-card-background-color": "var(--welcome-page-card-background-color)",
+      // "welcome-page-step-text-color": "var(--welcome-page-step-text-color)",
+      // "welcome-page-nav-padding": "var(--welcome-page-nav-padding)",
+      // "welcome-page-nav-height": "var(--welcome-page-nav-height)",
+      // "welcome-page-nav-z-index": "var(--welcome-page-nav-z-index)",
+    },
+  },
   shortcuts: {
     // 这里可以放全局公共样式
     //     "h-btn": "h-48px w-100% bg-#5C33BE b-none text-white rounded-8px"
@@ -20,9 +25,9 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
     presetIcons({
-      extraProperties: { display: "inline-block", "vertical-align": "middle" }
+      extraProperties: { display: "inline-block", "vertical-align": "middle" },
     }),
-    presetTypography()
+    presetTypography(),
   ],
-  transformers: [transformerAttributifyJsx()]
+  transformers: [transformerAttributifyJsx()],
 });
