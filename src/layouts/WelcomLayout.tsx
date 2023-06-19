@@ -22,7 +22,7 @@ export const WelcomeLayout: React.FC = () => {
     enter: { transform: "translateX(0%)" },
     leave: { transform: "translateX(-100%)" },
     config: {
-      duration: 2000,
+      duration: 300,
     },
     onStart: () => {
       setExtraStyle({ position: "absolute" });
@@ -34,7 +34,7 @@ export const WelcomeLayout: React.FC = () => {
   return (
     <div flex flex-col h-screen items-center>
       <header shrink-0>手帐</header>
-      <main grow-1 shrink-1 relative b-1 b-red b-solid w="100%" flex flex-col bg-gradient-to-b="var(--welcome-background-color-top) var(--welcome-background-color-bottom)">
+      <main grow-1 shrink-1 relative b-1 b-red b-solid w="100%" flex flex-col bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
         {transitions((styles, pathname) => (
           <a.div style={{ ...styles, ...extraStyle }} key={pathname} w="100%" h="100%">
             <div h="100%" flex justify-center items-center flex-col>
