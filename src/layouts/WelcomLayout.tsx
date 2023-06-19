@@ -2,6 +2,7 @@ import { a, useTransition } from "@react-spring/web";
 import * as React from "react";
 import { useRef, type ReactNode, useState } from "react";
 import { Link, useLocation, useOutlet } from "react-router-dom";
+import logo from "../assets/icons/logo.svg";
 
 const routeMap: Record<string, Record<string, string>> = {
   "/welcome/1": { nav: "/welcome/2", text: "下一页" },
@@ -32,13 +33,18 @@ export const WelcomeLayout: React.FC = () => {
     },
   });
   return (
-    <div flex flex-col h-screen items-center>
-      <header shrink-0>手帐</header>
-      <main grow-1 shrink-1 relative b-1 b-red b-solid w="100%" flex flex-col bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
+    <div flex flex-col h-screen items-center bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
+      <header shrink-0 flex flex-col justify-center items-center>
+        <img src={logo} alt="logo" w="8em" h="8em" />
+        <h1 tracking-2em text-center>
+          手帐
+        </h1>
+      </header>
+      <main grow-1 shrink-1 relative b-1 b-red b-solid w="100%" flex flex-col>
         {transitions((styles, pathname) => (
           <a.div style={{ ...styles, ...extraStyle }} key={pathname} w="100%" h="100%">
             <div h="100%" flex justify-center items-center flex-col>
-              <div w="90%" grow-1 my-4 bg-white>
+              <div w="80%" h="70%" my-4 bg-white>
                 {map.current[pathname]}
               </div>
             </div>
