@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Retrograde";
+  src: url("../../assets/fonts/Retrograde-Regular.otf");
+}
+@font-face {
+  font-family: "hcdzt";
+  src: url("../../assets/fonts/hcdzt.ttf");
+}
+
+body {
+  color: var(--basic-font-color);
+  font-family: "hcdzt", "Retrograde", -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei",
+    "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+  font-size: 16px;
+}

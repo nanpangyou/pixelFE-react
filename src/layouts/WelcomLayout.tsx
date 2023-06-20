@@ -23,7 +23,7 @@ export const WelcomeLayout: React.FC = () => {
     enter: { transform: "translateX(0%)" },
     leave: { transform: "translateX(-100%)" },
     config: {
-      duration: 300,
+      duration: 8000,
     },
     onStart: () => {
       setExtraStyle({ position: "absolute" });
@@ -36,15 +36,16 @@ export const WelcomeLayout: React.FC = () => {
     <div flex flex-col h-screen items-center bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
       <header shrink-0 flex flex-col justify-center items-center>
         <img src={logo} alt="logo" w="8em" h="8em" />
-        <h1 tracking-2em text-center>
-          手帐
+        <h1 text-center w="5em" flex justify-around font-800 text-3xl underline="~ 4 solid $basic-font-color">
+          <span>手</span>
+          <span>帐</span>
         </h1>
       </header>
-      <main grow-1 shrink-1 relative b-1 b-red b-solid w="100%" flex flex-col>
+      <main grow-1 shrink-1 relative w="100%" flex flex-col>
         {transitions((styles, pathname) => (
-          <a.div style={{ ...styles, ...extraStyle }} key={pathname} w="100%" h="100%">
+          <a.div style={{ ...styles, ...extraStyle }} key={pathname} h="100%" w="80%">
             <div h="100%" flex justify-center items-center flex-col>
-              <div w="80%" h="70%" my-4 bg-white>
+              <div w="80%" h="90%" my-4 bg-white>
                 {map.current[pathname]}
               </div>
             </div>
