@@ -23,7 +23,7 @@ export const WelcomeLayout: React.FC = () => {
     enter: { transform: "translateX(0%)" },
     leave: { transform: "translateX(-100%)" },
     config: {
-      duration: 8000,
+      duration: 300,
     },
     onStart: () => {
       setExtraStyle({ position: "absolute" });
@@ -41,20 +41,26 @@ export const WelcomeLayout: React.FC = () => {
           <span>帐</span>
         </h1>
       </header>
-      <main grow-1 shrink-1 relative w="100%" flex flex-col>
+      <main grow-1 shrink-1 relative w="100%" flex justify-center>
         {transitions((styles, pathname) => (
-          <a.div style={{ ...styles, ...extraStyle }} key={pathname} h="100%" w="80%">
+          <a.div style={{ ...styles, ...extraStyle }} key={pathname} h="100%" w="90%">
             <div h="100%" flex justify-center items-center flex-col>
-              <div w="80%" h="90%" my-4 bg-white>
+              <div w="90%" h="90%" my-4 bg-white>
                 {map.current[pathname]}
               </div>
             </div>
           </a.div>
         ))}
       </main>
-      <footer shrink-0>
-        <Link to={routeMap[location.pathname].nav}>{routeMap[location.pathname].text}</Link>
-        {location.pathname !== "/welcome/4" ? <Link to="/welcome/xxx">跳过</Link> : undefined}
+      <footer shrink-0 grid grid-cols-3 grid-rows-1 text-center w="100%" mb-4 text-2xl>
+        <Link style={{ gridArea: "1 / 2 / 2 / 3" }} to={routeMap[location.pathname].nav}>
+          {routeMap[location.pathname].text}
+        </Link>
+        {location.pathname !== "/welcome/4" ? (
+          <Link style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx">
+            跳过
+          </Link>
+        ) : undefined}
       </footer>
     </div>
   );
