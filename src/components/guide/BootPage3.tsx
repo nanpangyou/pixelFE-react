@@ -1,11 +1,16 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import third from "../../assets/icons/welcome-third.svg";
 
 export const BootPage3: React.FC = () => {
   return (
     <>
-      <div b-1 b-amber b-solid>
-        Bootpage3
+      <div h="100%" flex flex-col justify-around items-center>
+        <img src={third} alt="" />
+        <p text-center text-4xl>
+          会挣钱
+          <br />
+          还要会省钱
+        </p>
       </div>
     </>
   );

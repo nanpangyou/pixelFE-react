@@ -36,16 +36,16 @@ export const WelcomeLayout: React.FC = () => {
     <div flex flex-col h-screen items-center bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
       <header shrink-0 flex flex-col justify-center items-center>
         <img src={logo} alt="logo" w="8em" h="8em" />
-        <h1 text-center w="5em" flex justify-around font-800 text-3xl underline="~ 4 solid $basic-font-color">
-          <span>手</span>
-          <span>帐</span>
+        <h1 text-center w="5em" flex justify-around font-100 text-3xl underline="~ 4 solid $basic-font-color">
+          <span text="#ffebcd">手</span>
+          <span text="#ffebcd">账</span>
         </h1>
       </header>
       <main grow-1 shrink-1 relative w="100%" flex justify-center>
         {transitions((styles, pathname) => (
           <a.div style={{ ...styles, ...extraStyle }} key={pathname} h="100%" w="90%">
             <div h="100%" flex justify-center items-center flex-col>
-              <div w="90%" h="90%" my-4 bg-white>
+              <div w="90%" h="90%" my-4 bg-white rounded-5>
                 {map.current[pathname]}
               </div>
             </div>
@@ -53,11 +53,11 @@ export const WelcomeLayout: React.FC = () => {
         ))}
       </main>
       <footer shrink-0 grid grid-cols-3 grid-rows-1 text-center w="100%" mb-4 text-2xl>
-        <Link style={{ gridArea: "1 / 2 / 2 / 3" }} to={routeMap[location.pathname].nav}>
+        <Link text="#ffebcd" style={{ gridArea: "1 / 2 / 2 / 3" }} to={routeMap[location.pathname].nav}>
           {routeMap[location.pathname].text}
         </Link>
         {location.pathname !== "/welcome/4" ? (
-          <Link style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx">
+          <Link text="#ffebcd" style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx">
             跳过
           </Link>
         ) : undefined}

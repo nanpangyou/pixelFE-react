@@ -1,10 +1,16 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
-
+import fourth from "../../assets/icons/welcome-fourth.svg";
 export const BootPage4: React.FC = () => {
   return (
     <>
-      <div style={{ border: "1px solid red" }}> Bootpage4</div>
+      <div h="100%" flex flex-col justify-around items-center>
+        <img src={fourth} alt="" />
+        <p text-center text-4xl>
+          会挣钱
+          <br />
+          还要会省钱
+        </p>
+      </div>
     </>
   );
 };
