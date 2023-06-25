@@ -1,8 +1,9 @@
 import { a, useTransition } from "@react-spring/web";
 import * as React from "react";
-import { useRef, type ReactNode, useState } from "react";
+import { useRef, type ReactNode, useState, useEffect } from "react";
 import { Link, useLocation, useOutlet } from "react-router-dom";
 import logo from "../assets/icons/logo.svg";
+import { useSwipe } from "../hooks/useSwipe";
 
 const routeMap: Record<string, Record<string, string>> = {
   "/welcome/1": { nav: "/welcome/2", text: "下一页" },
@@ -32,6 +33,8 @@ export const WelcomeLayout: React.FC = () => {
       setExtraStyle({ position: "relative" });
     },
   });
+  const main = useRef<HTMLDivElement>(null);
+  useSwipe(main);
   return (
     <div flex flex-col h-screen items-center bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
       <header shrink-0 flex flex-col justify-center items-center>
@@ -41,7 +44,7 @@ export const WelcomeLayout: React.FC = () => {
           <span text="#ffebcd">账</span>
         </h1>
       </header>
-      <main grow-1 shrink-1 relative w="100%" flex justify-center>
+      <main grow-1 shrink-1 relative w="100%" flex justify-center ref={main}>
         {transitions((styles, pathname) => (
           <a.div style={{ ...styles, ...extraStyle }} key={pathname} h="100%" w="90%">
             <div h="100%" flex justify-center items-center flex-col>
