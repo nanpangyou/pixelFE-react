@@ -26,26 +26,26 @@ export const router = createHashRouter([
           { path: "1", element: <BootPage1 /> },
           { path: "2", element: <BootPage2 /> },
           { path: "3", element: <BootPage3 /> },
-          { path: "4", element: <BootPage4 /> }
-        ]
-      }
-    ]
+          { path: "4", element: <BootPage4 /> },
+        ],
+      },
+    ],
   },
   {
     path: "/style-component-demo",
-    element: <StyleComponentDemo />
+    element: <StyleComponentDemo />,
   },
   {
     path: "/css-module-demo",
-    element: <CssModuleDemo />
+    element: <CssModuleDemo />,
   },
   {
     path: "/uno-demo",
-    element: <UnocssDemo />
+    element: <UnocssDemo />,
   },
-  {
-    // 404 强制跳转至 ‘/’
-    path: "*",
-    element: <Navigate to="/welcome/1" replace />
-  }
+  // {
+  //   // 404 强制跳转至 ‘/’
+  //   path: "*",
+  //   element: <Navigate to="/welcome/1" replace />
+  // }
 ]);

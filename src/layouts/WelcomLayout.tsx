@@ -1,7 +1,7 @@
 import { a, useTransition } from "@react-spring/web";
 import * as React from "react";
 import { useRef, type ReactNode, useState, useEffect } from "react";
-import { Link, useLocation, useOutlet } from "react-router-dom";
+import { Link, useLocation, useNavigate, useOutlet } from "react-router-dom";
 import logo from "../assets/icons/logo.svg";
 import { useSwipe } from "../hooks/useSwipe";
 
@@ -16,6 +16,7 @@ export const WelcomeLayout: React.FC = () => {
   const map = useRef<Record<string, ReactNode>>({});
   const location = useLocation();
   const outlet = useOutlet();
+  const isAnimate = useRef(false);
   map.current[location.pathname] = outlet;
   const transitions = useTransition(location.pathname, {
     from: {
@@ -27,14 +28,26 @@ export const WelcomeLayout: React.FC = () => {
       duration: 300,
     },
     onStart: () => {
+      isAnimate.current = true;
       setExtraStyle({ position: "absolute" });
     },
     onRest: () => {
+      isAnimate.current = false;
       setExtraStyle({ position: "relative" });
     },
   });
   const main = useRef<HTMLDivElement>(null);
-  useSwipe(main);
+  const { direction } = useSwipe(main, {
+    onTouchStart: (e) => e.preventDefault(),
+  });
+  // console.log(direction);
+  const nav = useNavigate();
+  useEffect(() => {
+    if (direction === "left") {
+      if (isAnimate.current) return;
+      nav(routeMap[location.pathname].nav);
+    }
+  }, [direction, location.pathname, routeMap]);
   return (
     <div flex flex-col h-screen items-center bg-gradient="to-b from-[var(--welcome-background-color-top)] to-[var(--welcome-background-color-bottom)]">
       <header shrink-0 flex flex-col justify-center items-center>
