@@ -9,7 +9,7 @@ const routeMap: Record<string, Record<string, string>> = {
   "/welcome/1": { nav: "/welcome/2", text: "下一页" },
   "/welcome/2": { nav: "/welcome/3", text: "下一页" },
   "/welcome/3": { nav: "/welcome/4", text: "下一页" },
-  "/welcome/4": { nav: "/welcome/xxx", text: "开启手帐" },
+  "/welcome/4": { nav: "/home", text: "开启手帐" },
 };
 export const WelcomeLayout: React.FC = () => {
   const [extraStyle, setExtraStyle] = useState({});

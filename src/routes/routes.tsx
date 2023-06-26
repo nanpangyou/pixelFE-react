@@ -8,6 +8,7 @@ import { BootPage4 } from "../components/guide/BootPage4";
 import { StyleComponentDemo } from "../components/demo/StyleComponentDemo";
 import { CssModuleDemo } from "../components/demo/CssModuleDemo";
 import { UnocssDemo } from "../components/demo/UnocssDemo";
+import { Home } from "../view/home";
 // import { ErrorRouter } from "./ErrorRouter";
 
 // Todo change hash to browser router
@@ -32,6 +33,10 @@ export const router = createHashRouter([
     ],
   },
   {
+    path: "/home",
+    element: <Home />,
+  },
+  {
     path: "/style-component-demo",
     element: <StyleComponentDemo />,
   },
@@ -43,9 +48,9 @@ export const router = createHashRouter([
     path: "/uno-demo",
     element: <UnocssDemo />,
   },
-  // {
-  //   // 404 强制跳转至 ‘/’
-  //   path: "*",
-  //   element: <Navigate to="/welcome/1" replace />
-  // }
+  {
+    // 404 强制跳转至 ‘/’
+    path: "*",
+    element: <Navigate to="/welcome/1" replace />,
+  },
 ]);
