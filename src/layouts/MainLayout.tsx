@@ -1,13 +1,11 @@
 import * as React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Home } from "../view/home";
+import { Navigate, Outlet } from "react-router-dom";
 
 export const MainLayout: React.FC = () => {
-  const nav = useNavigate();
-  const isRead = true;
+  const isRead = false;
   if (isRead) {
-    nav("/home");
-    return;
+    return <Navigate to="/home" />;
+  } else {
+    return <Outlet />;
   }
-  return <Outlet />;
 };
