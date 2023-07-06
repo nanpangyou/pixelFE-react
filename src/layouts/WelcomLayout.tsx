@@ -42,6 +42,14 @@ export const WelcomeLayout: React.FC = () => {
   });
   // console.log(direction);
   const nav = useNavigate();
+  const onClickSkip = () => {
+    localStorage.setItem("isRead", "yes");
+  };
+  const onClickStart = () => {
+    if (location.pathname === "/welcome/4") {
+      localStorage.setItem("isRead", "yes");
+    }
+  };
   useEffect(() => {
     if (direction === "left") {
       if (isAnimate.current) return;
@@ -69,11 +77,11 @@ export const WelcomeLayout: React.FC = () => {
         ))}
       </main>
       <footer shrink-0 grid grid-cols-3 grid-rows-1 text-center w="100%" mb-4 text-2xl>
-        <Link text="#ffebcd" style={{ gridArea: "1 / 2 / 2 / 3" }} to={routeMap[location.pathname].nav}>
+        <Link text="#ffebcd" style={{ gridArea: "1 / 2 / 2 / 3" }} to={routeMap[location.pathname].nav} onClick={onClickStart}>
           {routeMap[location.pathname].text}
         </Link>
         {location.pathname !== "/welcome/4" ? (
-          <Link text="#ffebcd" style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx">
+          <Link text="#ffebcd" style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx" onClick={onClickSkip}>
             跳过
           </Link>
         ) : undefined}
