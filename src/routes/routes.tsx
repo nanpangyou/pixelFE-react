@@ -1,5 +1,5 @@
 import { Navigate, createHashRouter } from "react-router-dom";
-import { MainLayout } from "../layouts/MainLayout";
+import { App } from "../App";
 import { WelcomeLayout } from "../layouts/WelcomLayout";
 import { BootPage1 } from "../components/guide/BootPage1";
 import { BootPage2 } from "../components/guide/BootPage2";
@@ -16,25 +16,23 @@ import { Home } from "../view/home";
 export const router = createHashRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: <App />,
     // 404错误处理不使用errorElement,而是暂时用<Navigate>
     // errorElement: <ErrorRouter />,
-    children: [
-      {
-        path: "welcome",
-        element: <WelcomeLayout />,
-        children: [
-          { path: "1", element: <BootPage1 /> },
-          { path: "2", element: <BootPage2 /> },
-          { path: "3", element: <BootPage3 /> },
-          { path: "4", element: <BootPage4 /> },
-        ],
-      },
-    ],
   },
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/welcome",
+    element: <WelcomeLayout />,
+    children: [
+      { path: "1", element: <BootPage1 /> },
+      { path: "2", element: <BootPage2 /> },
+      { path: "3", element: <BootPage3 /> },
+      { path: "4", element: <BootPage4 /> },
+    ],
   },
   {
     path: "/style-component-demo",
