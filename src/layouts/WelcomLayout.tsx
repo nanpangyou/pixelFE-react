@@ -4,6 +4,7 @@ import { useRef, type ReactNode, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, useOutlet } from "react-router-dom";
 import logo from "../assets/icons/logo.svg";
 import { useSwipe } from "../hooks/useSwipe";
+import { useLocalStore } from "../store/useLocalStore";
 
 const routeMap: Record<string, Record<string, string>> = {
   "/welcome/1": { nav: "/welcome/2", text: "下一页" },
@@ -14,6 +15,7 @@ const routeMap: Record<string, Record<string, string>> = {
 export const WelcomeLayout: React.FC = () => {
   const [extraStyle, setExtraStyle] = useState({});
   const map = useRef<Record<string, ReactNode>>({});
+  const { setReadFlag } = useLocalStore();
   const location = useLocation();
   const outlet = useOutlet();
   const isAnimate = useRef(false);
@@ -43,11 +45,11 @@ export const WelcomeLayout: React.FC = () => {
   // console.log(direction);
   const nav = useNavigate();
   const onClickSkip = () => {
-    localStorage.setItem("isRead", "yes");
+    setReadFlag(true);
   };
   const onClickStart = () => {
     if (location.pathname === "/welcome/4") {
-      localStorage.setItem("isRead", "yes");
+      setReadFlag(true);
     }
   };
   useEffect(() => {
@@ -81,7 +83,7 @@ export const WelcomeLayout: React.FC = () => {
           {routeMap[location.pathname].text}
         </Link>
         {location.pathname !== "/welcome/4" ? (
-          <Link text="#ffebcd" style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx" onClick={onClickSkip}>
+          <Link text="#ffebcd" style={{ gridArea: "1 / 3 / 2 / 4" }} to="/home" onClick={onClickSkip}>
             跳过
           </Link>
         ) : undefined}
